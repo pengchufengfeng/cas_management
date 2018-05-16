@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.bucg.sso.mapper.Role_Client_ReaMapper" >
+  <resultMap id="BaseResultMap" type="com.bucg.sso.model.Role_Client_Rea" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="roleid" property="roleid" jdbcType="BIGINT" />
+    <result column="clientid" property="clientid" jdbcType="BIGINT" />
+    <result column="right_type" property="rightType" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, roleid, clientid, right_type
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from sys_role_client_relation
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from sys_role_client_relation
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.bucg.sso.model.Role_Client_Rea" >
+    insert into sys_role_client_relation (id, roleid, clientid, 
+      right_type)
+    values (#{id,jdbcType=BIGINT}, #{roleid,jdbcType=BIGINT}, #{clientid,jdbcType=BIGINT}, 
+      #{rightType,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.bucg.sso.model.Role_Client_Rea" >
+    insert into sys_role_client_relation
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="roleid != null" >
+        roleid,
+      </if>
+      <if test="clientid != null" >
+        clientid,
+      </if>
+      <if test="rightType != null" >
+        right_type,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="roleid != null" >
+        #{roleid,jdbcType=BIGINT},
+      </if>
+      <if test="clientid != null" >
+        #{clientid,jdbcType=BIGINT},
+      </if>
+      <if test="rightType != null" >
+        #{rightType,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.bucg.sso.model.Role_Client_Rea" >
+    update sys_role_client_relation
+    <set >
+      <if test="roleid != null" >
+        roleid = #{roleid,jdbcType=BIGINT},
+      </if>
+      <if test="clientid != null" >
+        clientid = #{clientid,jdbcType=BIGINT},
+      </if>
+      <if test="rightType != null" >
+        right_type = #{rightType,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.bucg.sso.model.Role_Client_Rea" >
+    update sys_role_client_relation
+    set roleid = #{roleid,jdbcType=BIGINT},
+      clientid = #{clientid,jdbcType=BIGINT},
+      right_type = #{rightType,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>
