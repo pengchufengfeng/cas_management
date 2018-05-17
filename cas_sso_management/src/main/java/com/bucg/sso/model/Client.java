@@ -1,5 +1,7 @@
 package com.bucg.sso.model;
 
+import java.util.Date;
+
 public class Client {
     private Long id;
 
@@ -12,6 +14,12 @@ public class Client {
     private String clientUrl;
 
     private String clientType;
+
+    private String clientStatus;
+
+    private Integer userid;
+
+    private Date clientGenCtime;
 
     public Long getId() {
         return id;
@@ -59,5 +67,29 @@ public class Client {
 
     public void setClientType(String clientType) {
         this.clientType = clientType == null ? null : clientType.trim();
+    }
+
+    public String getClientStatus() {
+        return clientStatus;
+    }
+
+    public void setClientStatus(String clientStatus) {
+        this.clientStatus = clientStatus == null ? null : clientStatus.trim();
+    }
+
+    public Integer getUserid() {
+        return userid;
+    }
+
+    public void setUserid(Integer userid) {
+        this.userid = userid;
+    }
+
+    public Date getClientGenCtime() {
+        return clientGenCtime;
+    }
+
+    public void setClientGenCtime(Date clientGenCtime) {
+        this.clientGenCtime = clientGenCtime;
     }
 }

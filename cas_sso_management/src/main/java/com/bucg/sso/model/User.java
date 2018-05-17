@@ -25,6 +25,8 @@ public class User {
 
     private Long count;
 
+    private String userStatus;
+
     public Long getId() {
         return id;
     }
@@ -111,5 +113,13 @@ public class User {
 
     public void setCount(Long count) {
         this.count = count;
+    }
+
+    public String getUserStatus() {
+        return userStatus;
+    }
+
+    public void setUserStatus(String userStatus) {
+        this.userStatus = userStatus == null ? null : userStatus.trim();
     }
 }
