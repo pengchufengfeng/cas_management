@@ -1,0 +1,58 @@
+package com.bucg.sso.service.impl;
+
+import java.io.IOException;
+import java.io.InputStream;
+
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.bucg.sso.mapper.User_Client_ReaMapper;
+import com.bucg.sso.model.User_Client_Rea;
+import com.bucg.sso.service.UserClientService;
+
+
+@Service
+public class UserClientServiceImpl implements UserClientService {
+	@Autowired
+	User_Client_ReaMapper ucm;
+	
+	public void importExcel(InputStream inputStream,String type) {
+		Workbook wb=	getWorkBook(inputStream,type);
+		Sheet sheet = wb.getSheetAt(0);
+		for(int i=1;i<sheet.getLastRowNum();i++) {
+			Row row = sheet.getRow(i);
+			 Long userid = Long.parseLong(row.getCell(0).getStringCellValue());
+			 Long clientid = Long.parseLong(row.getCell(1).getStringCellValue());
+			 String  identity=row.getCell(2).getStringCellValue();
+			 ucm.insert(new User_Client_Rea(userid, clientid, identity));
+			
+		}
+	}
+	
+	private Workbook getWorkBook(InputStream inputStream,String type) {
+		Workbook wb = null;
+			 try {
+				 if("xls".equalsIgnoreCase(type)) {
+				wb = new HSSFWorkbook(inputStream);}
+				 else {
+					 wb=new XSSFWorkbook(inputStream);
+				 }
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			return wb;
+		}
+
+	@Override
+	public int edit(User_Client_Rea userclient) {
+		// TODO Auto-generated method stub
+		
+		return ucm.updateByPrimaryKeySelective(userclient);
+	}
+		
+}

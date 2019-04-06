@@ -1,0 +1,18 @@
+package com.bucg.sso.service;
+
+import java.util.List;
+import com.bucg.sso.model.Client;
+import com.github.pagehelper.Page;
+
+public interface ClientService {
+	
+	List<Client> findAll();
+	int addClient(Client client);
+	int editClient(Client client);
+	int deleteClient(long id);
+	Page<Client> findByPage(int pageNo, int pageSize);
+	Client findById(long id);
+	
+	Page<Client> findByPage2(String client_name, String clientgroupid, int pageNo, int pageSize);
+
+}

@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jingxiang.common.dao.CommodityMapper">
+    <resultMap id="CommodityResultMap" type="com.jingxiang.common.entity.Commodity">
+        <result column="id" property="id"/>
+        <result column="commodity_num" property="commodityNum"/>
+        <result column="commodity_name" property="commodityName"/>
+        <result column="class_name" property="className"/>
+        <result column="commodity_scale" property="commodityScale"/>
+        <result column="way" property="way"/>
+        <result column="palace" property="palace"/>
+        <result column="dust" property="dust"/>
+        <result column="temput" property="temput"/>
+        <result column="note" property="note"/>
+        <result column="photo" property="photo"/>
+        <result column="commodity_stock" property="commodityStock"/>
+        <result column="commodity_status" property="commodityStatus"/>
+        <result column="create_date" property="createDate"/>
+        <result column="update_date" property="updateDate"/>
+        <result column="del_flag" property="delFlag"/>
+        <result column="artist" property="artistId"/>
+        <association property="artist" column="artist" select="getArtist"/> 
+    </resultMap>
+    
+   
+	<parameterMap type="com.jingxiang.common.entity.Commodity" id="CommodityParameterMap">
+        <parameter resultMap="id" property="id"/>
+        <parameter resultMap="commodity_num" property="commodityNum"/>
+        <parameter resultMap="commodity_name" property="commodityName"/>
+        <parameter resultMap="class_name" property="className"/>
+        <parameter resultMap="commodity_scale" property="commodityScale"/>
+        <parameter resultMap="artist" property="artistId"/>
+        <parameter resultMap="way" property="way"/>
+        <parameter resultMap="palace" property="palace"/>
+        <parameter resultMap="dust" property="dust"/>
+        <parameter resultMap="temput" property="temput"/>
+        <parameter resultMap="note" property="note"/>
+        <parameter resultMap="photo" property="photo"/>
+        <parameter resultMap="commodity_stock" property="commodityStock"/>
+        <parameter resultMap="commodity_status" property="commodityStatus"/>
+        <parameter resultMap="create_date" property="createDate"/>
+        <parameter resultMap="update_date" property="updateDate"/>
+        <parameter resultMap="del_flag" property="delFlag"/>
+        
+	 </parameterMap>
+	 
+    <select id="getArtist" parameterType="string" resultType="com.jingxiang.common.entity.Artist">
+         SELECT  id, artist_name  FROM sys_artist WHERE id=#{id}
+    </select>
+ 
+  
+    <insert id="insert" parameterMap="CommodityParameterMap" >
+        INSERT INTO sys_commodity(
+          id,
+		  commodity_num,
+		  commodity_name,
+		  class_name,
+		  commodity_scale,
+		  artist,
+		  way,
+		  palace,
+		  dust,
+		  temput,
+		  note,
+		  photo,
+		  commodity_stock,
+		  commodity_status,		  		 
+		  create_date,
+		  creator,
+		  update_date,
+		  modifier,
+		  del_flag) VALUES(
+        #{id},
+        #{commodityNum},
+        #{commodityName},
+        #{className},
+        #{commodityScale}, 
+        #{artistId}, 
+        #{way}, 
+        #{palace}, 
+        #{dust}, 
+        #{temput}, 
+        #{note}, 
+        #{photo}, 
+        #{commodityStock}, 
+        #{commodityStatus},      
+        #{createDate},
+        #{creator},
+        #{updateDate},
+        #{modifier},
+        #{delFlag}
+        )
+    </insert>
+    
+    
+    <update id="deleteById">
+        UPDATE sys_commodity
+        SET
+        del_flag = 1,
+        update_date = #{updateDate},
+        modifier = #{modifier}
+        WHERE id = #{id}
+    </update>
+
+
+    <!--根据entity自定义条件删除-->
+    <!-- <update id="delete" parameterMap="CommodityParameterMap">
+        update  sys_commodity
+        set
+        del_flag = 1,
+        update_date = #{updateDate},
+        modifier = #{modifier}
+        WHERE
+        <if test="nickName != null">
+            nick_name = #{nickName}
+        </if>
+    </update> -->
+
+    
+     <!--根据id更新用户信息-->
+    <update id="update" parameterMap="CommodityParameterMap">
+        UPDATE  sys_commodity
+        <set>         
+            <if test="commodityName != null">
+                commodity_name = #{commodityName},
+            </if>
+            <if test="avatarUrl != null">
+                class_name = #{className},
+            </if> 
+            <if test="commodityScale != null">
+                commodity_scale = #{commodityScale},
+            </if>
+            <if test="way != null">
+                way = #{way},
+            </if> 
+            <if test="artist != null">
+                artist = #{artistId},
+            </if>
+            <if test="palace != null">
+                palace = #{palace},
+            </if> 
+            <if test="dust != null">
+                dust = #{dust},
+            </if>
+            <if test="temput != null">
+                temput = #{temput},
+            </if> 
+            <if test="note != null">
+                note = #{note},
+            </if> 
+            <if test="photo != null">
+                photo = #{photo},
+            </if> 
+            <if test="commodityStock != null">
+                commodity_stock = #{commodityStock},
+            </if>
+            <if test="commodityStatus != null">
+                commodity_status = #{commodityStatus},
+            </if>      
+            <if test="modifier != null">
+                modifier = #{modifier},
+            </if>
+            <if test="updateDate != null">
+                update_date = #{updateDate}
+            </if>
+
+        </set>
+        WHERE
+        id = #{id}
+    </update>
+    
+    
+
+    <!--根据entity自定义条件查询-->
+    <select id="findList" resultMap="CommodityResultMap">
+    	select * from sys_commodity
+    	where del_flag = 0
+        
+         <if test="className != null">
+            AND  class_name like  CONCAT('%', #{className}, '%')
+        </if>
+        <if test="artistId != null">
+            AND  artist like  CONCAT('%', #{artistId}, '%')
+        </if>
+        <if test="commodityStatus != null">
+            AND  commodity_status like  CONCAT('%', #{commodityStatus}, '%')
+        </if>
+      
+        <if test="orderBy ==null">
+        	order by create_date desc
+        </if>     
+    </select>
+    
+    <!--根据id查询单条数据-->
+    <select id="get" resultMap="CommodityResultMap">
+    	select * from sys_commodity 
+    	where 
+    	id = #{id}
+    </select>
+
+    <!--查找所有数据-->
+    <select id="findAllList" resultMap="CommodityResultMap">
+        SELECT * from sys_commodity
+        where del_flag = 0
+    </select>
+
+
+    <!--检查用户是否存在于Commodity表-->
+    <select id="checkExist" resultMap="CommodityResultMap">
+        SELECT *
+        FROM `sys_commodity`
+        WHERE
+           del_flag = 0
+        AND id = #{id}
+     </select>
+</mapper>
+
+

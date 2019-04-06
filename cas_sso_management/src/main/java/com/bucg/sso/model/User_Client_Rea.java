@@ -1,43 +1,66 @@
 package com.bucg.sso.model;
 
 public class User_Client_Rea {
-    private Integer id;
+    private Long id;
 
-    private String userid;
+    private Long userid;
 
-    private String clientid;
+    private Long clientid;
 
     private String identity;
+    
+    public User_Client_Rea(Long userid, Long clientid, String identity) {
+		super();
+		this.userid = userid;
+		this.clientid = clientid;
+		this.identity = identity;
+	}
 
-    public Integer getId() {
+	public User_Client_Rea() {
+		super();
+	}
+
+	public User_Client_Rea(Long id, Long userid, Long clientid, String identity) {
+		super();
+		this.id = id;
+		this.userid = userid;
+		this.clientid = clientid;
+		this.identity = identity;
+	}
+
+	public Long getUserid() {
+		return userid;
+	}
+
+	public void setUserid(Long userid) {
+		this.userid = userid;
+	}
+
+	public Long getClientid() {
+		return clientid;
+	}
+
+	public void setClientid(Long clientid) {
+		this.clientid = clientid;
+	}
+
+	public String getIdentity() {
+		return identity;
+	}
+
+	public void setIdentity(String identity) {
+		this.identity = identity;
+	}
+
+	public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public String getUserid() {
-        return userid;
-    }
 
-    public void setUserid(String userid) {
-        this.userid = userid == null ? null : userid.trim();
-    }
 
-    public String getClientid() {
-        return clientid;
-    }
-
-    public void setClientid(String clientid) {
-        this.clientid = clientid == null ? null : clientid.trim();
-    }
-
-    public String getIdentity() {
-        return identity;
-    }
-
-    public void setIdentity(String identity) {
-        this.identity = identity == null ? null : identity.trim();
-    }
+    
 }

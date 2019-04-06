@@ -1,0 +1,66 @@
+spring:
+  servlet:
+    multipart:
+      enabled: true
+      file-size-threshold: 4KB
+      location: C:/file
+      max-file-size: 10Mb
+      max-request-size: 50Mb
+    encoding:
+        force: true
+        charset: UTF-8
+        enabled: true
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/jx_management?characterEncoding=utf-8  #这里配置数据库
+    username: root
+    password:
+    minPoolSize: 3
+    maxPoolSize: 25
+    maxLifetime: 20000
+    borrowConnectionTimeout: 30
+    loginTimeout: 30
+    maintenanceInterval: 60
+    maxIdleTime: 60
+    testQuery: select 1
+  redis:
+    host: 127.0.0.1
+    password:
+    port: 6379
+    jedis:
+      pool:
+        max-active: 8 #最大连接数
+        max-idle: 8 #最大空闲连接数
+        max-wait: -1 #最大等待时间
+        min-idle: 0 #初始化连接数
+server:
+  port: 8080
+  tomcat:
+    accesslog:
+      debug: true #请求响应数据调试
+    uri-encoding: UTF-8
+  servlet:
+    context-path: /
+mybatis:
+  config-location: classpath:mybatis-config.xml
+  mapper-locations: classpath*:com/jingxiang/common/dao/xml/*.xml
+security:
+  jwt:
+    secret: k09BQnaF
+    expiration: 604800 #7Days
+mail:
+  host:
+  port: 25
+  username:
+  password:
+  from:
+alarm:
+  mail:
+    template: classpath:alarm-template.txt
+  subject:
+    template: 请尽快处理#{'$'}{task.name}任务
+  periodInAdvance: P2D
+wx:
+  AppId: wx302f9d5991d0f821
+  AppSecret: a21a1bf482c9a4b22cec23b8b4f6a0cf

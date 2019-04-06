@@ -1,0 +1,26 @@
+package com.bucg.sso.mapper;
+
+import java.util.List;
+
+import com.bucg.sso.model.Client;
+import com.github.pagehelper.Page;
+
+public interface ClientMapper {
+    int deleteByPrimaryKey(Long id);
+
+    int insert(Client record);
+
+    int insertSelective(Client record);
+
+    Client selectByPrimaryKey(Long id);
+
+    int updateByPrimaryKeySelective(Client record);
+
+    int updateByPrimaryKey(Client record);
+    
+    List<Client> findAll();
+    
+    Page<Client> findByPage();
+    Page<Client> findByPage2(String clientName,String clientgroupid);
+    
+}

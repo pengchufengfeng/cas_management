@@ -1,0 +1,7 @@
+package com.bucg.sso.service;
+
+public interface ClientGroupService {
+	
+	
+
+}

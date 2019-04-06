@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>登陆丨Sharelink</title>
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" type="text/css" href="css/sweetalert.css"/>
+<style type="text/css">
+	html{
+		width: 100%;
+		height: 100%;
+	}
+	body{
+		width: 100%;
+		height: 100%;
+		background: url(images/banner.jpg)top center no-repeat;
+		background-size: cover;
+	}
+	.conlogin{
+		position: relative;
+	    width: 305px;
+	    margin: 15px auto 0 auto;
+	    text-align: center;
+	}
+</style>
+<body>
+
+<div class="login-container">
+	<h1>北京城建集团统一认证管理平台</h1>
+	
+	<!--<div class="connect">
+		<p>Link the world. Share to world.</p>
+	</div>-->
+	
+	<div class="conlogin">
+		<div>
+			<input type="text" name="username" class="username" placeholder="用户名" autocomplete="off" value="admin"/>
+		</div>
+		<div>
+			<input type="password" name="password" class="password" placeholder="密码" oncontextmenu="return false" onpaste="return false" />
+		</div>
+		<button id="submit" type="submit">登 陆</button>
+	</div>
+
+	<a href="register.html">
+		<button type="button" class="register-tis">还有没有账号？</button>
+	</a>
+
+</div>
+
+</body>
+<script src="http://www.jq22.com/jquery/1.11.1/jquery.min.js"></script>
+<script src="js/common.js"></script>
+<!--背景图片自动更换-->
+<!--<script src="js/supersized.3.2.7.min.js"></script>
+<script src="js/supersized-init.js"></script>-->
+<!--表单验证-->
+<script src="js/jquery.validate.min.js?var1.14.0"></script>
+<script src="js/sweetalert.min.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	$("#submit").click(function(){
+		$(".username").val()
+		$.ajax({
+			type:"get",
+			url:"http://172.16.18.129:10023/users/login",
+			data:{cjid:$(".username").val(),password:$(".password").val()},
+			async:true,
+			success:function(data){
+				console.log(data)
+				data.code==1?window.location.href="index.html":sweetAlert(data.data, "","error");
+			}
+		});
+	})
+	
+</script>
+</html>

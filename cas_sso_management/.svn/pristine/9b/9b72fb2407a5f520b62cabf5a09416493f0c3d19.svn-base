@@ -1,0 +1,402 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bucg.sso.mapper.ClientMapper">
+  <resultMap id="BaseResultMap" type="com.bucg.sso.model.Client">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="clientgroupid" jdbcType="BIGINT" property="clientgroupid" />
+    <result column="client_name" jdbcType="VARCHAR" property="clientName" />
+    <result column="client_code" jdbcType="VARCHAR" property="clientCode" />
+    <result column="client_url" jdbcType="VARCHAR" property="clientUrl" />
+    <result column="client_type" jdbcType="VARCHAR" property="clientType" />
+    <result column="client_status" jdbcType="VARCHAR" property="clientStatus" />
+    <result column="userid" jdbcType="INTEGER" property="userid" />
+    <result column="client_gen_ctime" jdbcType="TIMESTAMP" property="clientGenCtime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, clientgroupid, client_name, client_code, client_url, client_type, client_status, 
+    userid, client_gen_ctime
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from sys_client
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from sys_client
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.bucg.sso.model.Client">
+    insert into sys_client (id, clientgroupid, client_name, 
+      client_code, client_url, client_type, 
+      client_status, userid, client_gen_ctime
+      )
+    values (#{id,jdbcType=BIGINT}, #{clientgroupid,jdbcType=BIGINT}, #{clientName,jdbcType=VARCHAR}, 
+      #{clientCode,jdbcType=VARCHAR}, #{clientUrl,jdbcType=VARCHAR}, #{clientType,jdbcType=VARCHAR}, 
+      #{clientStatus,jdbcType=VARCHAR}, #{userid,jdbcType=INTEGER}, #{clientGenCtime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.bucg.sso.model.Client">
+    insert into sys_client
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="clientgroupid != null">
+        clientgroupid,
+      </if>
+      <if test="clientName != null">
+        client_name,
+      </if>
+      <if test="clientCode != null">
+        client_code,
+      </if>
+      <if test="clientUrl != null">
+        client_url,
+      </if>
+      <if test="clientType != null">
+        client_type,
+      </if>
+      <if test="clientStatus != null">
+        client_status,
+      </if>
+      <if test="userid != null">
+        userid,
+      </if>
+      <if test="clientGenCtime != null">
+        client_gen_ctime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="clientgroupid != null">
+        #{clientgroupid,jdbcType=BIGINT},
+      </if>
+      <if test="clientName != null">
+        #{clientName,jdbcType=VARCHAR},
+      </if>
+      <if test="clientCode != null">
+        #{clientCode,jdbcType=VARCHAR},
+      </if>
+      <if test="clientUrl != null">
+        #{clientUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="clientType != null">
+        #{clientType,jdbcType=VARCHAR},
+      </if>
+      <if test="clientStatus != null">
+        #{clientStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="userid != null">
+        #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="clientGenCtime != null">
+        #{clientGenCtime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.bucg.sso.model.Client">
+    update sys_client
+    <set>
+      <if test="clientgroupid != null">
+        clientgroupid = #{clientgroupid,jdbcType=BIGINT},
+      </if>
+      <if test="clientName != null">
+        client_name = #{clientName,jdbcType=VARCHAR},
+      </if>
+      <if test="clientCode != null">
+        client_code = #{clientCode,jdbcType=VARCHAR},
+      </if>
+      <if test="clientUrl != null">
+        client_url = #{clientUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="clientType != null">
+        client_type = #{clientType,jdbcType=VARCHAR},
+      </if>
+      <if test="clientStatus != null">
+        client_status = #{clientStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="userid != null">
+        userid = #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="clientGenCtime != null">
+        client_gen_ctime = #{clientGenCtime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.bucg.sso.model.Client">
+    update sys_client
+    set clientgroupid = #{clientgroupid,jdbcType=BIGINT},
+      client_name = #{clientName,jdbcType=VARCHAR},
+      client_code = #{clientCode,jdbcType=VARCHAR},
+      client_url = #{clientUrl,jdbcType=VARCHAR},
+      client_type = #{clientType,jdbcType=VARCHAR},
+      client_status = #{clientStatus,jdbcType=VARCHAR},
+      userid = #{userid,jdbcType=INTEGER},
+      client_gen_ctime = #{clientGenCtime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <resultMap id="BaseResultMap" type="com.bucg.sso.model.Client">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="clientgroupid" jdbcType="BIGINT" property="clientgroupid" />
+    <result column="client_name" jdbcType="VARCHAR" property="clientName" />
+    <result column="client_code" jdbcType="VARCHAR" property="clientCode" />
+    <result column="client_url" jdbcType="VARCHAR" property="clientUrl" />
+    <result column="client_type" jdbcType="VARCHAR" property="clientType" />
+    <result column="client_status" jdbcType="VARCHAR" property="clientStatus" />
+    <result column="userid" jdbcType="INTEGER" property="userid" />
+    <result column="client_gen_ctime" jdbcType="TIMESTAMP" property="clientGenCtime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, clientgroupid, client_name, client_code, client_url, client_type, client_status, 
+    userid, client_gen_ctime
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from sys_client
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from sys_client
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.bucg.sso.model.Client">
+    insert into sys_client (id, clientgroupid, client_name, 
+      client_code, client_url, client_type, 
+      client_status, userid, client_gen_ctime
+      )
+    values (#{id,jdbcType=BIGINT}, #{clientgroupid,jdbcType=BIGINT}, #{clientName,jdbcType=VARCHAR}, 
+      #{clientCode,jdbcType=VARCHAR}, #{clientUrl,jdbcType=VARCHAR}, #{clientType,jdbcType=VARCHAR}, 
+      #{clientStatus,jdbcType=VARCHAR}, #{userid,jdbcType=INTEGER}, #{clientGenCtime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.bucg.sso.model.Client">
+    insert into sys_client
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="clientgroupid != null">
+        clientgroupid,
+      </if>
+      <if test="clientName != null">
+        client_name,
+      </if>
+      <if test="clientCode != null">
+        client_code,
+      </if>
+      <if test="clientUrl != null">
+        client_url,
+      </if>
+      <if test="clientType != null">
+        client_type,
+      </if>
+      <if test="clientStatus != null">
+        client_status,
+      </if>
+      <if test="userid != null">
+        userid,
+      </if>
+      <if test="clientGenCtime != null">
+        client_gen_ctime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="clientgroupid != null">
+        #{clientgroupid,jdbcType=BIGINT},
+      </if>
+      <if test="clientName != null">
+        #{clientName,jdbcType=VARCHAR},
+      </if>
+      <if test="clientCode != null">
+        #{clientCode,jdbcType=VARCHAR},
+      </if>
+      <if test="clientUrl != null">
+        #{clientUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="clientType != null">
+        #{clientType,jdbcType=VARCHAR},
+      </if>
+      <if test="clientStatus != null">
+        #{clientStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="userid != null">
+        #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="clientGenCtime != null">
+        #{clientGenCtime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.bucg.sso.model.Client">
+    update sys_client
+    <set>
+      <if test="clientgroupid != null">
+        clientgroupid = #{clientgroupid,jdbcType=BIGINT},
+      </if>
+      <if test="clientName != null">
+        client_name = #{clientName,jdbcType=VARCHAR},
+      </if>
+      <if test="clientCode != null">
+        client_code = #{clientCode,jdbcType=VARCHAR},
+      </if>
+      <if test="clientUrl != null">
+        client_url = #{clientUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="clientType != null">
+        client_type = #{clientType,jdbcType=VARCHAR},
+      </if>
+      <if test="clientStatus != null">
+        client_status = #{clientStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="userid != null">
+        userid = #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="clientGenCtime != null">
+        client_gen_ctime = #{clientGenCtime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.bucg.sso.model.Client">
+    update sys_client
+    set clientgroupid = #{clientgroupid,jdbcType=BIGINT},
+      client_name = #{clientName,jdbcType=VARCHAR},
+      client_code = #{clientCode,jdbcType=VARCHAR},
+      client_url = #{clientUrl,jdbcType=VARCHAR},
+      client_type = #{clientType,jdbcType=VARCHAR},
+      client_status = #{clientStatus,jdbcType=VARCHAR},
+      userid = #{userid,jdbcType=INTEGER},
+      client_gen_ctime = #{clientGenCtime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <resultMap id="BaseResultMap" type="com.bucg.sso.model.Client">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="clientgroupid" jdbcType="BIGINT" property="clientgroupid" />
+    <result column="client_name" jdbcType="VARCHAR" property="clientName" />
+    <result column="client_code" jdbcType="VARCHAR" property="clientCode" />
+    <result column="client_url" jdbcType="VARCHAR" property="clientUrl" />
+    <result column="client_type" jdbcType="VARCHAR" property="clientType" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, clientgroupid, client_name, client_code, client_url, client_type
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from sys_client
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from sys_client
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.bucg.sso.model.Client">
+    insert into sys_client (id, clientgroupid, client_name, 
+      client_code, client_url, client_type
+      )
+    values (#{id,jdbcType=BIGINT}, #{clientgroupid,jdbcType=BIGINT}, #{clientName,jdbcType=VARCHAR}, 
+      #{clientCode,jdbcType=VARCHAR}, #{clientUrl,jdbcType=VARCHAR}, #{clientType,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.bucg.sso.model.Client">
+    insert into sys_client
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="clientgroupid != null">
+        clientgroupid,
+      </if>
+      <if test="clientName != null">
+        client_name,
+      </if>
+      <if test="clientCode != null">
+        client_code,
+      </if>
+      <if test="clientUrl != null">
+        client_url,
+      </if>
+      <if test="clientType != null">
+        client_type,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="clientgroupid != null">
+        #{clientgroupid,jdbcType=BIGINT},
+      </if>
+      <if test="clientName != null">
+        #{clientName,jdbcType=VARCHAR},
+      </if>
+      <if test="clientCode != null">
+        #{clientCode,jdbcType=VARCHAR},
+      </if>
+      <if test="clientUrl != null">
+        #{clientUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="clientType != null">
+        #{clientType,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.bucg.sso.model.Client">
+    update sys_client
+    <set>
+      <if test="clientgroupid != null">
+        clientgroupid = #{clientgroupid,jdbcType=BIGINT},
+      </if>
+      <if test="clientName != null">
+        client_name = #{clientName,jdbcType=VARCHAR},
+      </if>
+      <if test="clientCode != null">
+        client_code = #{clientCode,jdbcType=VARCHAR},
+      </if>
+      <if test="clientUrl != null">
+        client_url = #{clientUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="clientType != null">
+        client_type = #{clientType,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.bucg.sso.model.Client">
+    update sys_client
+    set clientgroupid = #{clientgroupid,jdbcType=BIGINT},
+      client_name = #{clientName,jdbcType=VARCHAR},
+      client_code = #{clientCode,jdbcType=VARCHAR},
+      client_url = #{clientUrl,jdbcType=VARCHAR},
+      client_type = #{clientType,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+   <select id="findAll" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+     from sys_client
+  </select>
+
+  <select id="findByPage" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from sys_client
+  </select>
+  
+  <select id="findByPage2" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from sys_client
+    where client_name = #{clientName,jdbcType=VARCHAR},
+    clientgroupid = #{clientgroupid,jdbcType=BIGINT}
+  </select>
+  
+</mapper>

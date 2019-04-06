@@ -1,0 +1,48 @@
+package com.bucg.sso.service;
+
+import java.util.List;
+
+import com.bucg.sso.model.User;
+import com.github.pagehelper.Page;
+
+
+public interface UserService {
+	
+	/**
+	 * 通过 id 查询用户
+	 * 
+	 * @param id
+	 * @return
+	 */
+	User findById(Long id);
+	
+	/**
+	 * 查询全部用户
+	 * 
+	 * @return
+	 */
+	List<User> findAll();
+	
+	/**
+	 * 添加用户
+	 * 
+	 * @return
+	 */
+	int  addUser(User user);
+	
+	/**
+	 * 修改用户
+	 * 
+	 * @return
+	 */
+	int editUser(User user);
+
+    /**
+     * 分页查询
+     * @param pageNo 页号
+     * @param pageSize 每页显示记录数
+     * @return
+     */
+    Page<User> findByPage(String code,String name,int pageNo, int pageSize);
+
+}

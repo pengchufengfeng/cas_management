@@ -1,6 +1,10 @@
 package com.bucg.sso.mapper;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.bucg.sso.model.User_Client_Rea;
+import com.bucg.sso.model.bean.UserClientMap;
+import com.github.pagehelper.Page;
 
 public interface User_Client_ReaMapper {
     int deleteByPrimaryKey(Integer id);
@@ -9,9 +13,12 @@ public interface User_Client_ReaMapper {
 
     int insertSelective(User_Client_Rea record);
 
-    User_Client_Rea selectByPrimaryKey(Integer id);
+    User_Client_Rea selectByPrimaryKey(long id);
 
     int updateByPrimaryKeySelective(User_Client_Rea record);
 
     int updateByPrimaryKey(User_Client_Rea record);
+    Page<UserClientMap> getPageByParam(@Param("username")String username,@Param("orgcode")String code);
+	Page<User_Client_Rea> findByPage();
+    
 }

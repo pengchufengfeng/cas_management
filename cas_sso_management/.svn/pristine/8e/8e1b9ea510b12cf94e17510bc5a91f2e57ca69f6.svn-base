@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bucg.sso.mapper.User_Client_ReaMapper">
+  <resultMap id="BaseResultMap" type="com.bucg.sso.model.User_Client_Rea">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="userid" jdbcType="VARCHAR" property="userid" />
+    <result column="clientid" jdbcType="VARCHAR" property="clientid" />
+    <result column="identity" jdbcType="VARCHAR" property="identity" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, userid, clientid, identity
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from sys_user_client
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from sys_user_client
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.bucg.sso.model.User_Client_Rea">
+    insert into sys_user_client (id, userid, clientid, 
+      identity)
+    values (#{id,jdbcType=INTEGER}, #{userid,jdbcType=VARCHAR}, #{clientid,jdbcType=VARCHAR}, 
+      #{identity,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.bucg.sso.model.User_Client_Rea">
+    insert into sys_user_client
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="userid != null">
+        userid,
+      </if>
+      <if test="clientid != null">
+        clientid,
+      </if>
+      <if test="identity != null">
+        identity,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="userid != null">
+        #{userid,jdbcType=VARCHAR},
+      </if>
+      <if test="clientid != null">
+        #{clientid,jdbcType=VARCHAR},
+      </if>
+      <if test="identity != null">
+        #{identity,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.bucg.sso.model.User_Client_Rea">
+    update sys_user_client
+    <set>
+      <if test="userid != null">
+        userid = #{userid,jdbcType=VARCHAR},
+      </if>
+      <if test="clientid != null">
+        clientid = #{clientid,jdbcType=VARCHAR},
+      </if>
+      <if test="identity != null">
+        identity = #{identity,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.bucg.sso.model.User_Client_Rea">
+    update sys_user_client
+    set userid = #{userid,jdbcType=VARCHAR},
+      clientid = #{clientid,jdbcType=VARCHAR},
+      identity = #{identity,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="com.bucg.sso.model.User_Client_Rea">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="userid" jdbcType="VARCHAR" property="userid" />
+    <result column="clientid" jdbcType="VARCHAR" property="clientid" />
+    <result column="identity" jdbcType="VARCHAR" property="identity" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, userid, clientid, identity
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from sys_user_client
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from sys_user_client
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.bucg.sso.model.User_Client_Rea">
+    insert into sys_user_client (id, userid, clientid, 
+      identity)
+    values (#{id,jdbcType=INTEGER}, #{userid,jdbcType=VARCHAR}, #{clientid,jdbcType=VARCHAR}, 
+      #{identity,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.bucg.sso.model.User_Client_Rea">
+    insert into sys_user_client
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="userid != null">
+        userid,
+      </if>
+      <if test="clientid != null">
+        clientid,
+      </if>
+      <if test="identity != null">
+        identity,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="userid != null">
+        #{userid,jdbcType=VARCHAR},
+      </if>
+      <if test="clientid != null">
+        #{clientid,jdbcType=VARCHAR},
+      </if>
+      <if test="identity != null">
+        #{identity,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.bucg.sso.model.User_Client_Rea">
+    update sys_user_client
+    <set>
+      <if test="userid != null">
+        userid = #{userid,jdbcType=VARCHAR},
+      </if>
+      <if test="clientid != null">
+        clientid = #{clientid,jdbcType=VARCHAR},
+      </if>
+      <if test="identity != null">
+        identity = #{identity,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.bucg.sso.model.User_Client_Rea">
+    update sys_user_client
+    set userid = #{userid,jdbcType=VARCHAR},
+      clientid = #{clientid,jdbcType=VARCHAR},
+      identity = #{identity,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="com.bucg.sso.model.User_Client_Rea">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="userid" jdbcType="VARCHAR" property="userid" />
+    <result column="clientid" jdbcType="VARCHAR" property="clientid" />
+    <result column="identity" jdbcType="VARCHAR" property="identity" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, userid, clientid, identity
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from sys_user_client
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from sys_user_client
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.bucg.sso.model.User_Client_Rea">
+    insert into sys_user_client (id, userid, clientid, 
+      identity)
+    values (#{id,jdbcType=INTEGER}, #{userid,jdbcType=VARCHAR}, #{clientid,jdbcType=VARCHAR}, 
+      #{identity,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.bucg.sso.model.User_Client_Rea">
+    insert into sys_user_client
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="userid != null">
+        userid,
+      </if>
+      <if test="clientid != null">
+        clientid,
+      </if>
+      <if test="identity != null">
+        identity,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="userid != null">
+        #{userid,jdbcType=VARCHAR},
+      </if>
+      <if test="clientid != null">
+        #{clientid,jdbcType=VARCHAR},
+      </if>
+      <if test="identity != null">
+        #{identity,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.bucg.sso.model.User_Client_Rea">
+    update sys_user_client
+    <set>
+      <if test="userid != null">
+        userid = #{userid,jdbcType=VARCHAR},
+      </if>
+      <if test="clientid != null">
+        clientid = #{clientid,jdbcType=VARCHAR},
+      </if>
+      <if test="identity != null">
+        identity = #{identity,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.bucg.sso.model.User_Client_Rea">
+    update sys_user_client
+    set userid = #{userid,jdbcType=VARCHAR},
+      clientid = #{clientid,jdbcType=VARCHAR},
+      identity = #{identity,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

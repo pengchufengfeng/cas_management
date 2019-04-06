@@ -1,0 +1,43 @@
+package com.bucg.sso.model;
+
+public class User_Client_Rea {
+    private long id;
+
+    private long userid;
+
+    private long clientid;
+
+    private String identity;
+
+    public String getIdentity() {
+        return identity;
+    }
+
+    public void setIdentity(String identity) {
+        this.identity = identity == null ? null : identity.trim();
+    }
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+	public long getUserid() {
+		return userid;
+	}
+
+	public void setUserid(long userid) {
+		this.userid = userid;
+	}
+
+	public long getClientid() {
+		return clientid;
+	}
+
+	public void setClientid(long clientid) {
+		this.clientid = clientid;
+	}
+}

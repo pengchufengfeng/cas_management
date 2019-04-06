@@ -1,0 +1,9 @@
+package com.bucg.sso.controller;
+
+public class ClientGroupController {
+
+	public ClientGroupController() {
+		// TODO Auto-generated constructor stub
+	}
+
+}
